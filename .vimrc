@@ -1,8 +1,7 @@
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 set backspace=indent,eol,start
 
-
-
+let g:EclimCompletionMethod = 'omnifunc'
 
 set foldmethod=indent
 set t_Co=256
@@ -11,7 +10,6 @@ set cursorline
 let Tlist_Compact_Format = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
-
 
 
 set tabstop=4
@@ -79,9 +77,13 @@ map <C-l> :Tlist<CR>
 map <C-b> :MBEToggleAll<CR>
 map <F1> :!python2.7 %
 map <F2> :!python %
+map <F6> :Ant clean debug uninstall install
+map <F7> :Ant clean debug
+map <F8> :Ant clean release uninstall install
+map <F10> :JavaImport
 
 map < :bprev<CR>
 map > :bnext<CR>
 map <F5> :!astyle %
 
-colorscheme Tomorrow-Night-Bright 
+colorscheme inkpot

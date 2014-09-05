@@ -1,0 +1,15 @@
+mkdir zxing
+open_with q
+rename androidSDK
+open_with 2
+rename android-sdk
+shell
+open_with mocp
+search share
+delete
+open_with file-roller
+rename btnshare.png
+search 547
+searc
+search *547
+mkdir backup

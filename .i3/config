@@ -1,12 +1,15 @@
 set $mod Mod4
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 new_window 1pixel
 
+
+
 bar {
     position	top
-    font xft:Monospace 10
-    status_command i3status -c ~/.i3/i3status.conf
+    font xft:DejaVuSansMono-Bold 10
+    status_command ~/.i3/conkybar
+#status_command i3status -c ~/.i3/i3status.conf
     colors {
         background #000000
         statusline #ffffff
@@ -14,8 +17,9 @@ bar {
         focused_workspace  #ffffff #000000
         active_workspace   #ffffff #000000
         inactive_workspace #888888 #000000
-        urgent_workspace   #ffffff #000000
-    }       
+        urgent_workspace   #ffffff #6123af
+    }
+
 }
 
 mode "resize" {
@@ -33,10 +37,12 @@ mode "resize" {
 
 
 # class                 border  backgr. text    indicator
-client.focused          #ffffff #000009 #ffffff #2e9ef4
-client.focused_inactive #ffffff #000009 #ffffff #484e50
-client.unfocused        #ffffff #202020 #888888 #292d2e
-client.urgent           #ffffff #900000 #ffffff #900000
+client.focused          #4c7899 #285577 #ffffff #2e9ef4
+client.focused_inactive #333333 #5f676a #ffffff #484e50
+client.unfocused        #333333 #222222 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
+
+
 
 
 
@@ -46,13 +52,19 @@ bindsym $mod+Return exec urxvt
 bindsym Shift+Control+p exec urxvt -e python
 bindsym Shift+Control+w exec chromium
 bindsym Shift+$mod+n exec urxvt -e wicd-curses
-bindsym Shift+$mod+f exec urxvt -e ranger
+bindsym $mod+Shift+f exec urxvt -e ranger
 bindsym $mod+Shift+g exec urxvt -e vim
+bindsym $mod+Shift+t exec urxvt -e htop
+
 
 
 ##bars
-bindsym $mod+Shift+d exec find ~/ \( ! -regex '.*/\..*' \) | sed 's/ /\\ /g' | sort -f | dmenu -b -i -l 20 | xargs urxvt -e ranger
-bindsym $mod+d exec dmenu_run -b
+bindsym $mod+Shift+s exec find ~/ \( ! -regex '.*/\..*' \) | sed 's/ /\\ /g' | sort -f | dmenu -b -i -l 20 | xargs urxvt -e ranger
+bindsym $mod+Shift+d exec dmenu_run -b
+bindsym $mod+d exec i3-dmenu-desktop 
+#bindsym $mod+Shift+t exec cat /opt/tstack/.tstack | dmenu -b -i -l 20 | xargs tstack -r 
+
+
 
 ##wm
 bindsym $mod+Shift+c reload
