@@ -1,5 +1,5 @@
 set $mod Mod4
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1#
 floating_modifier $mod
 new_window 1pixel
 
@@ -8,8 +8,8 @@ new_window 1pixel
 bar {
     position	top
     font xft:DejaVuSansMono-Bold 10
-    status_command ~/.i3/conkybar
-#status_command i3status -c ~/.i3/i3status.conf
+    #status_command ~/.i3/conkybar
+    status_command i3status -c ~/.i3/i3status.conf
     colors {
         background #000000
         statusline #ffffff
@@ -62,7 +62,6 @@ bindsym $mod+Shift+t exec urxvt -e htop
 bindsym $mod+Shift+s exec find ~/ \( ! -regex '.*/\..*' \) | sed 's/ /\\ /g' | sort -f | dmenu -b -i -l 20 | xargs urxvt -e ranger
 bindsym $mod+Shift+d exec dmenu_run -b
 bindsym $mod+d exec i3-dmenu-desktop 
-#bindsym $mod+Shift+t exec cat /opt/tstack/.tstack | dmenu -b -i -l 20 | xargs tstack -r 
 
 
 
@@ -73,6 +72,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 ###windows
+
+bindsym $mod+Shift+w exec ~/.scripts/dmenu/winmenu.py
 bindsym $mod+q kill
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -133,5 +134,5 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
-bindsym $mod+Escape exec /home/cg87/.scripts/dmenu/power.sh
+bindsym $mod+Escape exec ~/.scripts/dmenu/shutdown.sh
 
